@@ -1,14 +1,15 @@
 using PathCreation.Examples;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoRoadUpdate : MonoBehaviour
+namespace Butcher_TA
 {
-    private RoadMeshCreator rmc;
-    void Start()
+    public class AutoRoadUpdate : MonoBehaviour
     {
-        rmc = GetComponent<RoadMeshCreator>();
-        rmc.TriggerUpdate();
+        private RoadMeshCreator rmc;
+        void Start()
+        {
+            rmc = GetComponent<RoadMeshCreator>();
+            rmc.TriggerUpdate();
+        }
     }
 }

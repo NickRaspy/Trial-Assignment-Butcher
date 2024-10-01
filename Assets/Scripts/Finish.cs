@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Finish : MonoBehaviour
+namespace Butcher_TA
 {
-    [SerializeField] private AudioClip clip;
-    [SerializeField] private bool isFinal;
-    [SerializeField] private int minimumGap;
-    private void OnTriggerEnter(Collider other)
+    public class Finish : MonoBehaviour
     {
-        if(other.transform.parent.GetComponent<PlayerBehavior>().CurrentScore >= minimumGap && !isFinal)
+        [SerializeField] private AudioClip clip;
+        [SerializeField] private bool isFinal;
+        [SerializeField] private int minimumGap;
+        private void OnTriggerEnter(Collider other)
         {
-            transform.parent.GetComponent<Animator>().Play("DoorOpen");
-            GameManager.instance.source.PlayOneShot(clip);
-        }
-        else
-        {
-            GameManager.instance.EndLevel(true);
+            if (GameManager.instance.Score >= minimumGap && !isFinal)
+            {
+                transform.parent.GetComponent<Animator>().Play("DoorOpen");
+                GameManager.instance.source.PlayOneShot(clip);
+            }
+            else
+            {
+                GameManager.instance.EndLevel(true);
+            }
         }
     }
 }

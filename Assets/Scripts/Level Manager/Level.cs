@@ -1,12 +1,13 @@
 using PathCreation;
 using UnityEngine;
+using UnityEngine.Splines;
 
 namespace ButchersGames
 {
     public class Level : MonoBehaviour
     {
         public Transform playerSpawnPoint;
-        public PathCreator path;
+        public SplineContainer spline;
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

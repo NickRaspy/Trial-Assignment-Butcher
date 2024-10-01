@@ -2,81 +2,125 @@ using ButchersGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+namespace Butcher_TA
 {
-    public static GameManager instance = null;
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if(instance == null) instance = this;
-        else if(instance == this) Destroy(gameObject);
-    }
-    [SerializeField] PlayerBehavior player;
-    public AudioSource source;
-    [SerializeField] private AudioClip winSFX;
-    [SerializeField] private AudioClip loseSFX;
-    [Header("UI")]
-    [SerializeField] private Canvas gameUI;
-    [SerializeField] private Canvas menuUI;
-    [SerializeField] private Canvas winUI;
-    [SerializeField] private Canvas loseUI;
-    [SerializeField] private Text scoreText;
-    [SerializeField] private List<Text> levelNameTexts;
+        public static GameManager instance = null;
+        private void Awake()
+        {
+            if (instance != null) Destroy(this);
+            else instance = this;
+        }
 
-    public bool gameStarted = false;
-    void Start()
-    {
-        source = player.GetComponent<AudioSource>();
-        StartGame();
-    }
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && !gameStarted)
+        public PlayerBehavior player;
+
+        [Header("Audio")]
+        public AudioSource source;
+        [SerializeField] private AudioClip winSFX;
+        [SerializeField] private AudioClip loseSFX;
+
+        [Header("UI")]
+        [SerializeField] private Canvas gameUI;
+        [SerializeField] private Canvas menuUI;
+        [SerializeField] private Canvas winUI;
+        [SerializeField] private Canvas loseUI;
+        [SerializeField] private Text scoreText;
+        [SerializeField] private List<Text> levelNameTexts;
+
+        public bool IsPlaying { get; private set; }
+
+        private int score;
+        public int Score
         {
-            StartMove();
+            get => score;
+            set
+            {
+                score = value;
+
+                scoreText.text = value.ToString();
+
+                if(score <= 0) EndLevel(false);
+
+                OnScoreChange.Invoke(value);
+            }
         }
-        scoreText.text = player.CurrentScore.ToString();
-    }
-    public void EndLevel(bool didWin)
-    {
-        player.StopMoving();
-        
-        gameUI.gameObject.SetActive(false);
-        if (didWin) 
+        public UnityEvent<int> OnScoreChange { get; set; }
+
+        private Level currentLevel;
+
+        void Start()
         {
-            player.model.GetComponent<Animator>().Play("Dance");
-            source.PlayOneShot(winSFX);
-            winUI.gameObject.SetActive(true);
+
+            source = player.GetComponent<AudioSource>();
+            OnScoreChange = new();
+
+            PrepareGame();
         }
-        else
+
+        private void OnGUI()
         {
-            player.model.GetComponent<Animator>().Play("Anger");
-            source.PlayOneShot(loseSFX);
-            loseUI.gameObject.SetActive(true);
+            if((Event.current.type == EventType.MouseDown || Event.current.type == EventType.TouchDown) && !IsPlaying)
+            {
+                StartGame();
+            }
         }
-    }
-    public void StartGame()
-    {
-        player.CurrentScore = 40f;
-        gameStarted = false;
-        player.model.GetComponent<Animator>().SetBool("isWalking", false);
-        player.model.GetComponent<Animator>().Play("Idle");
-        LevelManager.Default.Init();
-        player.transform.SetLocalPositionAndRotation(LevelManager.Default.Levels[LevelManager.Default.CurrentLevelIndex].playerSpawnPoint.position,
-    LevelManager.Default.Levels[LevelManager.Default.CurrentLevelIndex].playerSpawnPoint.rotation);
-        foreach (Text text in levelNameTexts)
+
+        public void EndLevel(bool didWin)
         {
-            text.text = $"Уровень {LevelManager.CurrentLevel}";
+            player.SetMoveState(false);
+
+            gameUI.gameObject.SetActive(false);
+
+            player.PlayModelAnimation(didWin ? "Dance" : "Anger");
+
+            source.PlayOneShot(didWin ? winSFX : loseSFX);
+
+            if (didWin) winUI.gameObject.SetActive(true);
+            else loseUI.gameObject.SetActive(true);
         }
-    }
-    public void StartMove()
-    {
-        menuUI.gameObject.SetActive(false);
-        gameUI.gameObject.SetActive(true);
-        player.canMove = true;
-        player.pathFollower.pathCreator = LevelManager.Default.Levels[LevelManager.Default.CurrentLevelIndex].path;
-        player.model.GetComponent<Animator>().SetBool("isWalking", true);
-        gameStarted = true;
+        public void PrepareGame()
+        {
+            Score = 40;
+
+            IsPlaying = false;
+            player.SetModelAnimatorBoolValue("isWalking", false);
+            player.PlayModelAnimation("Idle");
+
+            player.ChangeOutfit(Score, false);
+
+            LoadLevel();
+
+            player.ResetStartPosition(currentLevel.playerSpawnPoint);
+            player.SetSplinePath(currentLevel.spline);
+            player.ResetMove();
+
+            foreach (Text text in levelNameTexts)
+            {
+                text.text = $"Уровень {LevelManager.CurrentLevel}";
+            }
+        }
+        public void StartGame()
+        {
+            menuUI.gameObject.SetActive(false);
+            gameUI.gameObject.SetActive(true);
+
+            /*            player.SetPath(LevelManager.Default.Levels[LevelManager.Default.CurrentLevelIndex].path);*/
+
+            player.SetMoveState(true);
+
+            player.SetModelAnimatorBoolValue("isWalking", true);
+
+            IsPlaying = true;
+        }
+
+        private void LoadLevel()
+        {
+            LevelManager.Default.Init();
+            currentLevel = LevelManager.Default.Levels[LevelManager.Default.CurrentLevelIndex];
+        }
     }
 }

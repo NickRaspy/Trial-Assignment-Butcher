@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationSound : MonoBehaviour
+namespace Butcher_TA
 {
-    public void PlaySound(AudioClip clip)
+    public class AnimationSound : MonoBehaviour
     {
-        GameManager.instance.source.PlayOneShot(clip);
+        public void PlaySound(AudioClip clip)
+        {
+            GameManager.instance.source.PlayOneShot(clip);
+        }
     }
 }

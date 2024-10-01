@@ -97,3 +97,4 @@ Material:
     - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
