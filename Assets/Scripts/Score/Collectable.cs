@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Butcher_TA
 {
-    public class Collectable : PointGiver
+    public class Collectable : ScoreGiver
     {
         [SerializeField] private GameObject collectableObject;
 

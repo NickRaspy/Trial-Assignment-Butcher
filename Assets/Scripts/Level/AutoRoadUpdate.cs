@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Butcher_TA
 {
+    [RequireComponent (typeof(RoadMeshCreator))]
     public class AutoRoadUpdate : MonoBehaviour
     {
         private RoadMeshCreator rmc;

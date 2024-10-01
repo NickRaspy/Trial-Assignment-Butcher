@@ -1162,7 +1162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpawnPoint: {fileID: 5670524938930447757}
-  path: {fileID: 5516605053291897594}
   spline: {fileID: 1360189733642334970}
 --- !u!1 &2164905204216006620
 GameObject:

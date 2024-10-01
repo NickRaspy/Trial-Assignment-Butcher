@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Butcher_TA
 {
-    public abstract class PointGiver : MonoBehaviour
+    public abstract class ScoreGiver : MonoBehaviour
     {
         [SerializeField] private AudioClip soundEffect;
         [SerializeField] private Type type;

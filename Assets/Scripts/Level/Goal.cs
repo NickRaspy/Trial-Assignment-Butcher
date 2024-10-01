@@ -10,11 +10,11 @@ namespace Butcher_TA
         private void OnTriggerEnter(Collider other)
         {
             StartCoroutine(Wait());
-            if (other.CompareTag("Player")) GameManager.instance.player.CanMove = false;
+            if (other.CompareTag("Player")) GameManager.instance.player.ChangeMove(false);
         }
         private void OnTriggerExit(Collider other)
         {
-            other.transform.parent.GetComponent<PlayerBehavior>().CanMove = true;
+            other.transform.parent.GetComponent<PlayerBehavior>().ChangeMove(true);
         }
         IEnumerator Wait()
         {
