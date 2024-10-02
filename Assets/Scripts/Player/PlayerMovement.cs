@@ -13,6 +13,8 @@ namespace Butcher_TA
 
         public bool CanMove { get; set; }
 
+        private float moveX;
+
         private void Update()
         {
             if (CanMove)
@@ -20,12 +22,9 @@ namespace Butcher_TA
                 if (Input.GetMouseButton(0))
                 {
                     Move();
-                    RotateCharacter(Input.mousePosition);
                 }
-                else
-                {
-                    ReturnToOriginalRotation();
-                }
+                if (moveX != 0f) RotateCharacter(Input.mousePosition);
+                else ReturnToOriginalRotation();
             }
             else ReturnToOriginalRotation();
 
@@ -34,7 +33,7 @@ namespace Butcher_TA
 
         public void Move()
         {
-            float moveX = Input.GetAxis("Mouse X") * Time.deltaTime * speed;
+            moveX = Input.GetAxis("Mouse X") * Time.deltaTime * speed;
             control.Translate(moveX, 0f, 0f);
         }
 

@@ -4816,8 +4816,8 @@ MonoBehaviour:
   loseUI: {fileID: 1462292012}
   scoreText: {fileID: 106129794}
   summaryScoreText: {fileID: 1051656089}
-  getScoreText: {fileID: 0}
-  getMultipliedScoreText: {fileID: 0}
+  getScoreButtonText: {fileID: 1617941915}
+  getMultiScoreButtonText: {fileID: 147003586}
   levelNameTexts:
   - {fileID: 1588931937}
   - {fileID: 1523379029}
@@ -6462,7 +6462,7 @@ MonoBehaviour:
   speed: 10
   borderLimit: 0.65
   rotationAngle: 45
-  returnSpeed: 2
+  returnSpeed: 10
 --- !u!114 &984460270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6715,10 +6715,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c75225276fb029c498612bdbd6c93990, type: 3}
-    m_FontSize: 65
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 116
     m_Alignment: 5
     m_AlignByGeometry: 0

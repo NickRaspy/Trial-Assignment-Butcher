@@ -38,8 +38,8 @@ namespace Butcher_TA
         [SerializeField] private Canvas loseUI;
         [SerializeField] private Text scoreText;
         [SerializeField] private Text summaryScoreText;
-        [SerializeField] private TMP_Text getScoreText;
-        [SerializeField] private TMP_Text getMultipliedScoreText;
+        [SerializeField] private TMP_Text getScoreButtonText;
+        [SerializeField] private TMP_Text getMultiScoreButtonText;
         [SerializeField] private List<Text> levelNameTexts;
 
         public bool IsPlaying { get; private set; }
@@ -128,8 +128,8 @@ namespace Butcher_TA
 
         public void SetGetScoreButtonText(bool isMultiplied)
         {
-            if (!isMultiplied) getScoreText.text = Score.ToString();
-            else getMultipliedScoreText.text = (Score * ScoreMultiplier).ToString();
+            if (!isMultiplied) getScoreButtonText.text = Score.ToString();
+            else getMultiScoreButtonText.text = (Score * ScoreMultiplier).ToString();
         }
 
         private void LoadLevel()
