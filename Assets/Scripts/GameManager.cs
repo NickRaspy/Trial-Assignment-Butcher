@@ -37,7 +37,7 @@ namespace Butcher_TA
         [SerializeField] private Canvas winUI;
         [SerializeField] private Canvas loseUI;
         [SerializeField] private Text scoreText;
-        [SerializeField] private TMP_Text summaryScoreText;
+        [SerializeField] private Text summaryScoreText;
         [SerializeField] private TMP_Text getScoreText;
         [SerializeField] private TMP_Text getMultipliedScoreText;
         [SerializeField] private List<Text> levelNameTexts;
