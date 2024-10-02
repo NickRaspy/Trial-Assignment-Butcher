@@ -93,10 +93,13 @@ namespace Butcher_TA
         public void EndLevel(bool didWin)
         {
             SetGetScoreButtonText(false);
-            player.SetMoveState(false);
             gameUI.gameObject.SetActive(false);
+
+            player.SetMoveState(false);
             player.PlayModelAnimation(didWin ? "Dance" : "Anger");
+
             source.PlayOneShot(didWin ? winSFX : loseSFX);
+
             if (didWin) winUI.gameObject.SetActive(true);
             else loseUI.gameObject.SetActive(true);
         }

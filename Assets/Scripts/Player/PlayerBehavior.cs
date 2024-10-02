@@ -28,7 +28,8 @@ namespace Butcher_TA
         {
             GameManager.instance.OnScoreChange.AddListener(score => 
             {
-                ChangeOutfit(score, true);
+                if (score > 0) ChangeOutfit(score, true);
+                else GameManager.instance.EndLevel(false);
             });
         }
 

@@ -17,15 +17,9 @@ namespace Butcher_TA
 
         private void Update()
         {
-            if (CanMove)
-            {
-                if (Input.GetMouseButton(0))
-                {
-                    Move();
-                }
-                if (moveX != 0f) RotateCharacter(Input.mousePosition);
-                else ReturnToOriginalRotation();
-            }
+            if (CanMove && Input.GetMouseButton(0)) Move();
+
+            if (moveX != 0f) RotateCharacter(Input.mousePosition);
             else ReturnToOriginalRotation();
 
             control.localPosition = new Vector3(Mathf.Clamp(control.localPosition.x, -borderLimit, borderLimit), 0f, 0f);
