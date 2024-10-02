@@ -27,6 +27,7 @@ namespace Butcher_TA
                     ReturnToOriginalRotation();
                 }
             }
+            else ReturnToOriginalRotation();
 
             control.localPosition = new Vector3(Mathf.Clamp(control.localPosition.x, -borderLimit, borderLimit), 0f, 0f);
         }
@@ -41,9 +42,9 @@ namespace Butcher_TA
         {
             Vector3 viewportPosition = Camera.main.ScreenToViewportPoint(mousePosition);
             float offsetX = viewportPosition.x - 0.5f;
-            float targetAngle = Mathf.Clamp(offsetX * 2, -rotationAngle, rotationAngle);
+            float targetAngle = Mathf.Clamp(offsetX * rotationAngle * 2, -rotationAngle, rotationAngle);
 
-            modelPoint.localRotation = Quaternion.Euler(0f, targetAngle * 50f, 0f);
+            modelPoint.localRotation = Quaternion.Euler(0f, targetAngle, 0f);
         }
 
         public void ReturnToOriginalRotation()

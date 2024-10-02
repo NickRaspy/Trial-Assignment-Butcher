@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8729319927907374732
 Transform:
   m_ObjectHideFlags: 0
@@ -3323,6 +3323,7 @@ Transform:
   - {fileID: 3690924128133100557}
   - {fileID: 7538799614751725892}
   - {fileID: 2409732458249385366}
+  - {fileID: 3713269473966449458}
   m_Father: {fileID: 408501780208156704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8754518931048057415
@@ -9104,12 +9105,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7988318820203562892}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16018221, y: 0.000000069963335, z: -0.000000021177526, w: 0.98708755}
-  m_LocalPosition: {x: 0.000000059601007, y: 1, z: -1.5000008}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.16018218, y: 0.00000011920926, z: -0.000000022351736, w: 0.9870875}
+  m_LocalPosition: {x: 0, y: 2, z: -3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 408501780208156704}
+  m_Father: {fileID: 7549575965620509551}
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!20 &2372291315144294551
 Camera:
@@ -9144,7 +9145,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -9177,7 +9178,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7988318820203562892}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -9489,7 +9490,6 @@ Transform:
   m_Children:
   - {fileID: 7549575965620509551}
   - {fileID: 8729319927907374732}
-  - {fileID: 3713269473966449458}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2884109238754401
@@ -9527,44 +9527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 315dc61a5b25c114d8a6004e6954bc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineAnimate: {fileID: 2884109238754401}
-  control: {fileID: 7549575965620509551}
-  modelPoint: {fileID: 7538799614751725892}
-  modelAnimator: {fileID: 7384649178322062236}
-  outfits:
-  - outfitModel: {fileID: 7443425839176285370}
-    minimalScore: 0
-  - outfitModel: {fileID: 4020021182045283690}
-    minimalScore: 35
-  - outfitModel: {fileID: 4361919912128682813}
-    minimalScore: 70
-  - outfitModel: {fileID: 5343371967081621}
-    minimalScore: 105
-  - outfitModel: {fileID: 3402042212636757810}
-    minimalScore: 140
-  particles:
-  - {fileID: 8010693488749390646}
-  halo: {fileID: 6235797631392740945}
-  pointEffect: {fileID: 6082111259880753675}
-  sliderFill: {fileID: 7696398130832111719}
-  slider: {fileID: 919493559425413087}
-  stateText: {fileID: 7924408339407694648}
-  stateColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0.34317866, b: 0, a: 1}
-  - {r: 1, g: 0.93042624, b: 0, a: 1}
-  - {r: 0.21032429, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0.7831135, b: 1, a: 1}
-  states:
-  - "\u041D\u0438\u0449\u0438\u0439"
-  - "\u0411\u0435\u0434\u043D\u044B\u0439"
-  - "\u0421\u043E\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u043D\u044B\u0439"
-  - "\u0411\u043E\u0433\u0430\u0442\u044B\u0439"
-  - "\u041C\u0438\u043B\u043B\u0438\u043E\u043D\u0435\u0440"
-  speed: 10
-  borderLimit: 0.65
-  rotationAngle: 15
-  returnSpeed: 10
 --- !u!82 &1136073596957664031
 AudioSource:
   m_ObjectHideFlags: 0

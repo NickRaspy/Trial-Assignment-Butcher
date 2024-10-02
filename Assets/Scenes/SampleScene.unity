@@ -6860,7 +6860,7 @@ MonoBehaviour:
   modelPoint: {fileID: 627056296}
   speed: 10
   borderLimit: 0.65
-  rotationAngle: 15
+  rotationAngle: 45
   returnSpeed: 2
 --- !u!114 &984460270
 MonoBehaviour:
@@ -12770,6 +12770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2235557049856187, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 121298879213565329, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12826,13 +12830,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2372291315144294551, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611016454458493922, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3713269473966449458, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000000059601007
       objectReference: {fileID: 0}
     - target: {fileID: 3713269473966449458, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5000008
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3713269473966449458, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12874,8 +12886,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 2611016454458493922, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2235557049856187, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8344474749940319581, guid: ab9addfa4ca1fe54489964e172c51276, type: 3}
       insertIndex: -1
